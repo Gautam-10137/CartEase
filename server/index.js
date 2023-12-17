@@ -5,7 +5,7 @@ const cors=require('cors');
 require('dotenv').config();
 const port=process.env.PORT;
 const password=process.env.PASSWORD;
-const apiRoutes=require('./routes/appRoutes')
+const apiRoutes=require('./routes/apiRoutes')
 
 const app=express();
 
