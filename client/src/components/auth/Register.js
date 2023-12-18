@@ -27,7 +27,7 @@ const Register = () => {
         const email=formData.email;
         const password=formData.password;
         const confirmPassword=formData.confirmPassword;
-        if(password!=confirmPassword){
+        if(password!==confirmPassword){
             setPasswordError('Password do not match');
             return ;
         }
