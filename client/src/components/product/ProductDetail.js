@@ -1,7 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../../redux/CartSlice';
 const ProductDetail = () => {
+    const dispatch=useDispatch();
     const {productID}=useParams();
     const [product,setProduct]=useState({
         name:'',
@@ -33,6 +35,10 @@ const ProductDetail = () => {
     }
     fetchProduct();
    },[]);
+   
+   const handleAddToCart=()=>{
+     dispatch(addToCart(product));
+   }
   return (
     
     <div className='product-detail-container'>
@@ -41,6 +47,7 @@ const ProductDetail = () => {
         <h3>{product.name}</h3>
         <p>{product.description}</p>
         <p><strong>Price: </strong>{product.price}</p>
+        <button onClick={handleAddToCart}>Add to Cart</button>
         </div>
     </div>
   )

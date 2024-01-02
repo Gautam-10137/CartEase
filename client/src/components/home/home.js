@@ -2,13 +2,15 @@ import React from 'react'
 import Header from '../header/header'
 import AddProduct from '../product/AddProduct'
 import ProductList from '../product/ProductList'
+import Cart from '../cart/Cart'
 
 const Home = () => {
   return (
     <div>
       <Header/>
       {/* <AddProduct/> */}
-      <ProductList/>
+      <ProductList/>  
+      <Cart/>
     </div>
   )
 }

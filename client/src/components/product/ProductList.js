@@ -4,7 +4,7 @@ const ProductList = () => {
    const [products,setProducts]=useState([]);
    const [currentPage,setCurrentPage]=useState(1);
    const [productsPerPage]=useState(10);
-   const [currentProducts,setCurrentProducts]=useState([]);
+
   //  Fetching products from backend
    useEffect(()=>{
        
@@ -26,8 +26,8 @@ const ProductList = () => {
   
   const indexOfLastProduct=currentPage*productsPerPage;
   const indexOfFirstProduct=indexOfLastProduct-productsPerPage;
-  const currentProduct=products.slice(indexOfFirstProduct,indexOfLastProduct);
- console.log(currentProduct);
+  const currentProducts=products.slice(indexOfFirstProduct,indexOfLastProduct);
+ 
 
   const handlePageChange=(pageNumber)=>{
     setCurrentPage(pageNumber);
@@ -60,8 +60,8 @@ const ProductList = () => {
         <h2>Product Listing :</h2>
         <div className='product-list '>
            {
-            currentProduct.map((product)=>(
-              <ProductCard key={product._id} product={product} onAddToCart={handleAddToCart}></ProductCard>
+            currentProducts.map((product)=>(
+              <ProductCard key={product._id} product={product} ></ProductCard>
             ))
            }  
         </div>   
