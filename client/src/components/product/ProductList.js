@@ -4,45 +4,49 @@ const ProductList = () => {
    const [products,setProducts]=useState([]);
    const [currentPage,setCurrentPage]=useState(1);
    const [productsPerPage]=useState(10);
-
+   const [currentProducts,setCurrentProducts]=useState([]);
   //  Fetching products from backend
    useEffect(()=>{
-       try{
+       
          const fetchData=async ()=>{
+          try{
           const response=await fetch('http://127.0.0.1:7000/api/product/all');
           const data=await response.json();
           setProducts(data);
-        }
-      }
-      catch(error){
-        console.error('Error Fetching products: '+ error);
-      }
-      fetchData();
+          
+          }
+          catch(error){
+             console.error('Error Fetching products: '+ error);
+          }
+         }
+     
+       fetchData();
    },[])
   
   
   const indexOfLastProduct=currentPage*productsPerPage;
   const indexOfFirstProduct=indexOfLastProduct-productsPerPage;
-  const currentProducts=products.slice(indexOfFirstProduct,indexOfLastProduct);
+  const currentProduct=products.slice(indexOfFirstProduct,indexOfLastProduct);
+ console.log(currentProduct);
 
   const handlePageChange=(pageNumber)=>{
     setCurrentPage(pageNumber);
   }
-  const renderPaginationControl=()=>{
+  const renderPaginationControls=()=>{
     const pageNumbers=Math.ceil(products.length/productsPerPage);
 
     return (
       <div className='pagination'> 
         {
-          Array.from({length:pageNumbers},((_,index)=>index+1).map((pageNumber)=>(
-            <span
-              key={pageNumber}
-              className={`page-number ${currentPage==pageNumber?'active':''}`}
-              onClick={()=>handlePageChange(pageNumber)}
-            >
-              {pageNumber}
-            </span>
-          )))
+         Array.from({ length: pageNumbers }).map((_, index) => index + 1).map((pageNumber) => (
+           <span
+            key={pageNumber}
+            className={`page-number${currentPage === pageNumber ? 'active' : ''}`}
+           onClick={() => handlePageChange(pageNumber)}
+           >
+           {pageNumber}
+          </span>
+         ))
         }
       </div>
     )
@@ -54,16 +58,17 @@ const ProductList = () => {
   return (
     <div className='product-list-container'>
         <h2>Product Listing :</h2>
-        <div className='product-list'>
+        <div className='product-list '>
            {
-            currentProducts.map((product)=>(
-              <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart}></ProductCard>
+            currentProduct.map((product)=>(
+              <ProductCard key={product._id} product={product} onAddToCart={handleAddToCart}></ProductCard>
             ))
            }  
         </div>   
+        <div className='pagination'>{renderPaginationControls()}</div>
     </div>
-);
+  );
   
-}
+ }
 
-export default ProductList
+export default ProductList;

@@ -30,11 +30,15 @@
 /* styles.css */
 
 .product-list-container {
-  display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  justify-content: space-around; /* Distribute items evenly with space around */
+ background-color: rgb(229, 232, 232);
+ height: max-content;
 }
 
+.product-list{
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-around; /* Distribute items evenly with space around */ 
+}
 .product-card {
   border: 1px solid #ddd;
   padding: 16px;
@@ -75,3 +79,22 @@
   margin-top: 10px;
 }
 
+.pagination{
+  width: max-content;
+  margin-left: 40%;
+
+}
+.page-numberactive{
+  font-weight: bold;
+  
+}
+
+/* product details */
+.product-detail{
+  margin-left: 30%;
+  margin-top: 10%;
+  border: 2px solid rgb(92, 89, 89);
+  width: 30%;
+  height: max-content;
+  
+}
