@@ -5,6 +5,8 @@ import Register from "./components/auth/Register";
 import Home from './components/home/home';
 import ProductDetail from './components/product/ProductDetail';
 
+import CheckoutPage from './components/checkout/CheckoutPage';
+
 function App() {
   return (
     <div className="App">
@@ -13,6 +15,7 @@ function App() {
           <Route index path="/" element={<Home/>} ></Route>
           <Route path="/api/auth/login" element={<Login/>}></Route>
           <Route path="/product/:productID" element={<ProductDetail/>}></Route>
+          <Route path="/checkout" element={<CheckoutPage/>}></Route>
           <Route></Route>
         </Routes>
      </BrowserRouter>

@@ -98,3 +98,23 @@
   height: max-content;
   
 }
+
+#order-summary{
+   margin-left: 30%;
+   /* background-color: #eae8e8; */
+   width: 40%;
+   text-align: center;
+   
+}
+.summary-item{
+  display: flex;
+  justify-content: space-evenly;
+  width: 500px;
+  border: 2px solid rgb(187, 187, 187);
+  background-color: rgb(244, 242, 242);
+  border-radius: 0.5rem;
+  
+}
+.summary-item>img{
+  margin-top: 5%;
+}

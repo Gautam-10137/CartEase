@@ -6,6 +6,7 @@ const ProductDetail = () => {
     const dispatch=useDispatch();
     const {productID}=useParams();
     const [product,setProduct]=useState({
+        _id:'',
         name:'',
         price:0,
         description:'',
@@ -37,6 +38,7 @@ const ProductDetail = () => {
    },[]);
    
    const handleAddToCart=()=>{
+
      dispatch(addToCart(product));
    }
   return (

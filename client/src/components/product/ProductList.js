@@ -1,19 +1,24 @@
 import React,{ useEffect, useState }  from 'react'
 import ProductCard from './ProductCard';
+import SearchBar from '../search/SearchBar';
 const ProductList = () => {
    const [products,setProducts]=useState([]);
+   const [filteredProducts,setFilteredProducts]=useState([]);
    const [currentPage,setCurrentPage]=useState(1);
    const [productsPerPage]=useState(10);
-
+   const [searchTerm,setSearchTerm]=useState('');
   //  Fetching products from backend
+
+
    useEffect(()=>{
-       
+       console.log('search');
          const fetchData=async ()=>{
           try{
           const response=await fetch('http://127.0.0.1:7000/api/product/all');
           const data=await response.json();
-          setProducts(data);
-          
+          const filteredProduct=searchTerm!==''?data.filter((product)=>product.name.toLowerCase().includes(searchTerm.toLowerCase())):data;
+         setProducts(filteredProduct);  
+        // setProducts(data);
           }
           catch(error){
              console.error('Error Fetching products: '+ error);
@@ -21,9 +26,10 @@ const ProductList = () => {
          }
      
        fetchData();
-   },[])
+   },[searchTerm])
   
-  
+
+
   const indexOfLastProduct=currentPage*productsPerPage;
   const indexOfFirstProduct=indexOfLastProduct-productsPerPage;
   const currentProducts=products.slice(indexOfFirstProduct,indexOfLastProduct);
@@ -52,12 +58,11 @@ const ProductList = () => {
     )
   }
   
-  const handleAddToCart=(productId)=>{
-    console.log(`product with ID ${productId} added to cart`);
-  }
+ 
   return (
     <div className='product-list-container'>
         <h2>Product Listing :</h2>
+        <SearchBar setSearchTerm={setSearchTerm}/>
         <div className='product-list '>
            {
             currentProducts.map((product)=>(
