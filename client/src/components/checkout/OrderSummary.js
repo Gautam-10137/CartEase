@@ -2,12 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 
-const OrderSummary = ({val, handleOrder, onNextStep}) => {
+const OrderSummary = ({ onNextStep,updateOrderItems}) => {
   const cartItems=useSelector((state)=>state.cart.items||[]);
 
   const navigate=useNavigate();
   const handleShippingClick=()=>{  
     // Navigate to the next step
+    updateOrderItems(cartItems);
     onNextStep();
     
   }
