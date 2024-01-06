@@ -15,7 +15,7 @@ const OrderSummary = ({ onNextStep,updateOrderItems}) => {
   return (
     <div>
       order summary
-      <div id="order-summary"> 
+      <div className="order-summary"> 
         {cartItems.length>0?cartItems.map((item,index)=>(
         <div className='summary-item' key={index}>
              <img src={item.imageUrl} alt={item.name}></img>

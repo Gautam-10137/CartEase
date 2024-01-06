@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const PaymentDetails = ({ onNextStep, onPrevStep ,updatePaymentDetails}) => {
   const [paymentDetails,setPaymentDetails]=useState({
+    fullname:'',
     cardNumber: '',
     expirationDate: '',
     cvv: '',
@@ -27,9 +28,18 @@ const PaymentDetails = ({ onNextStep, onPrevStep ,updatePaymentDetails}) => {
   }
 
   return (
-    <div>
+    <div className='payment-details'>
       <h2>Payment Details</h2>
       <form>
+      <label htmlFor="fullname">Full Name:</label>
+        <input
+          type="text"
+          name='fullname'
+          id="fullname"
+          value={paymentDetails.fullname}
+          onChange={(e) => handleInputChange(e)}
+        />
+
         <label htmlFor="cardNumber">Card Number:</label>
         <input
           type="text"
@@ -59,10 +69,10 @@ const PaymentDetails = ({ onNextStep, onPrevStep ,updatePaymentDetails}) => {
 
         <div>
           <button type="button" onClick={handlePrev}>
-            Previous
+            Edit Shipping Information
           </button>
           <button type="button" onClick={handleNext}>
-            Next
+            Confirm Order
           </button>
         </div>
       </form>

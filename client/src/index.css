@@ -99,7 +99,7 @@
   
 }
 
-#order-summary{
+.order-summary{
    margin-left: 30%;
    /* background-color: #eae8e8; */
    width: 40%;
@@ -143,4 +143,35 @@
   padding: 7px 7px;
 
 
+}
+
+.payment-details{
+  margin-left: 30%;
+  background-color: aqua;
+  width: 400px;
+}
+
+.payment-details>form>input{
+  width: 90%;
+  margin-left: 2px;
+  border-radius: 0.2rem;
+}
+
+.shipping-info{
+  margin-top:3%;
+  margin-left: 30%;
+  width: 33%;
+  border: 2px solid rgb(204, 202, 202);
+  border-radius: 0.5rem;
+  background-color: rgb(216, 218, 219);
+  
+}
+
+.payment-info{
+  margin-top: 3%;
+  margin-left: 30%;
+  width: 33%;
+  border: 2px solid rgb(204, 202, 202);
+  border-radius: 0.5rem;
+  background-color: rgb(216, 218, 219);
 }

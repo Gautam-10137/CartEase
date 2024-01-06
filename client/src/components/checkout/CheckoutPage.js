@@ -60,7 +60,7 @@ const CheckoutPage = () => {
       {currentStep==1 && <OrderSummary  onNextStep={handleNext} updateOrderItems={updateOrderItems}/>}
       {currentStep===2 && <ShippingInformation onNextStep={handleNext} onPrevStep={handlePrevStep} updateShippingAddress={updateShippingAddress}/>}
       {currentStep===3 && <PaymentDetails onNextStep={handleNext} onPrevStep={handlePrevStep} updatePaymentDetails={updatePaymentDetails}/>}
-      {currentStep===4 && <OrderConfirmation/>}
+      {currentStep===4 && <OrderConfirmation orderData={orderData}/>}
     </div>
   )
 }
