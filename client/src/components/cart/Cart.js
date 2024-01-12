@@ -14,7 +14,7 @@ const Cart = () => {
                {item.name}
            </div>
        ))}
-       <button onClick={handleCheckout}>Checkout</button>
+       <button onClick={handleCheckout}>Cart</button>
     </div>
   )
 }

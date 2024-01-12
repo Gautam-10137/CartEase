@@ -15,7 +15,7 @@ const Header = () => {
             </div>
             <div className='profile-section'>
                    <span>Hello , Gautam</span>
-                   <Link to='/api/auth/login'>
+                   <Link to='/login'>
                     Login</Link>
             </div>
         </nav>

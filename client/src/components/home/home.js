@@ -5,15 +5,19 @@ import ProductList from '../product/ProductList'
 import Cart from '../cart/Cart'
 import OrderSummary from '../checkout/OrderSummary'
 import PaymentDetails from '../checkout/PaymentDetails'
+import Category from '../category/Category'
 
 
 const Home = () => {
   return (
     <div>
       <Header/>
-    
+       <Cart/>
+       <Category/>
       <ProductList/>  
-      <Cart/>
+      <AddProduct/>
+      
+      
      
     
     </div>

@@ -22,5 +22,8 @@ router.get('/get-key',PaymentController.getKey);
 // getting orders of particular user
 router.get('/orders/:userId',OrderController.getOrders);
 
+// getting products of particular category
+router.get('/product/category/:categoryId',ProductController.getCategoryProducts);
+
 
 module.exports= router;

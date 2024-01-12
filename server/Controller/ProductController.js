@@ -28,7 +28,20 @@ const  ProductController={
         catch(error){
             res.status(500).json({error:error.message});
         }
+    },
+    getCategoryProducts: async(req,res)=>{
+        try{
+            console.log("category");
+            const categoryId=req.params.categoryId;
+            console.log(categoryId);
+            const products= await ProductService.getCategoryProducts(categoryId);
+            res.status(200).json(products);
+        }
+        catch(error){
+            res.status(500).json(error);
+        }
     }
+
     
 }
 module.exports=ProductController;
