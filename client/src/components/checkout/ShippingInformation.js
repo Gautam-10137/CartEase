@@ -25,7 +25,7 @@ const ShippingInformation = ({onNextStep,onPrevStep,updateShippingAddress}) => {
     onPrevStep();
     navigate('/checkout');
   }
-  const handlePaymentDetails=(e)=>{
+  const handleConfirmOrder=(e)=>{
     e.preventDefault();
     updateShippingAddress(shippingAddress);
     onNextStep();
@@ -96,7 +96,7 @@ const ShippingInformation = ({onNextStep,onPrevStep,updateShippingAddress}) => {
 
       <div>
         <button onClick={handleOrderSummary}>{"<- Order Summary"}</button>
-        <button type="submit" onClick={handlePaymentDetails}>{"Payment Details ->"}</button>
+        <button type="submit" onClick={handleConfirmOrder}>{"Confirm Order ->"}</button>
       </div>
       </form >
       

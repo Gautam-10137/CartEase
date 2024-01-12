@@ -6,6 +6,7 @@ import Home from './components/home/home';
 import ProductDetail from './components/product/ProductDetail';
 
 import CheckoutPage from './components/checkout/CheckoutPage';
+import PaymentSuccess from './components/checkout/PaymentSuccess';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/api/auth/login" element={<Login/>}></Route>
           <Route path="/product/:productID" element={<ProductDetail/>}></Route>
           <Route path="/checkout" element={<CheckoutPage/>}></Route>
-          <Route></Route>
+          <Route path="/paymentsuccess" element={<PaymentSuccess/>}></Route>
         </Routes>
      </BrowserRouter>
     </div>

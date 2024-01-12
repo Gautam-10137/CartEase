@@ -2,10 +2,22 @@ const express=require('express');
 const router=express.Router();
 const authRoutes=require('./authRoutes');
 const ProductController = require('../Controller/ProductController');
-
+const PaymentController=require('../Controller/paymentController');
+const OrderController=require('../Controller/orderController');
 router.use('/auth',authRoutes);
 router.post('/product/add',ProductController.addProduct);
 router.get('/product/all',ProductController.getProducts);
 router.get('/product/:productID',ProductController.getProduct);
+
+router.post('/order/create-order',OrderController.createOrder);
+// creating payment order in razorpay
+router.post('/payment/create-order',PaymentController.createOrder);
+
+// handling payment success callback
+router.post('/payment-success',PaymentController.paymentSuccess); 
+
+// getting RazorPay key
+router.get('/get-key',PaymentController.getKey);
+
 
 module.exports= router;

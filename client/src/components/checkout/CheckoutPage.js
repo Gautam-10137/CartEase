@@ -7,6 +7,7 @@ import OrderConfirmation from './OrderConfirmation';
 const CheckoutPage = () => {
     const [currentStep,setCurrentStep]=useState(1);
     const [orderData, setOrderData] = useState({
+      userId:'657e4cd2567544a0bd963c3e',
       items: [], 
       shippingAddress: {
         fullName: '',
@@ -15,13 +16,10 @@ const CheckoutPage = () => {
         city: '',
         state: '',
         postalCode: '',
-        country: '',
+        country: ''
       },
-      paymentDetails: {
-        cardNumber: '',
-        expirationDate: '',
-        cvv: '',
-      },
+      
+      payment:'pending'
     });
    console.log(orderData);
     const updateOrderItems=(selectedProducts)=>{
@@ -59,8 +57,8 @@ const CheckoutPage = () => {
     <div>
       {currentStep==1 && <OrderSummary  onNextStep={handleNext} updateOrderItems={updateOrderItems}/>}
       {currentStep===2 && <ShippingInformation onNextStep={handleNext} onPrevStep={handlePrevStep} updateShippingAddress={updateShippingAddress}/>}
-      {currentStep===3 && <PaymentDetails onNextStep={handleNext} onPrevStep={handlePrevStep} updatePaymentDetails={updatePaymentDetails}/>}
-      {currentStep===4 && <OrderConfirmation orderData={orderData}/>}
+      {/* {currentStep===3 && <PaymentDetails onNextStep={handleNext} onPrevStep={handlePrevStep} updatePaymentDetails={updatePaymentDetails}/>} */}
+      {currentStep===3 && <OrderConfirmation orderData={orderData}/>}
     </div>
   )
 }

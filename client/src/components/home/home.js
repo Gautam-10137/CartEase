@@ -6,6 +6,7 @@ import Cart from '../cart/Cart'
 import OrderSummary from '../checkout/OrderSummary'
 import PaymentDetails from '../checkout/PaymentDetails'
 
+
 const Home = () => {
   return (
     <div>
@@ -13,6 +14,7 @@ const Home = () => {
     
       <ProductList/>  
       <Cart/>
+     
     
     </div>
   )
