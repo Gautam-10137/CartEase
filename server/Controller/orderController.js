@@ -12,7 +12,19 @@ const OrderController={
     catch(error){
         res.status(500).json('Internal server error');
     }
-   }
+   },
+   getOrders: async(req,res)=>{
+    try{
+        const userId=req.params.userId;
+        console.log(userId);
+        const orders=await OrderService.getOrders(userId);
+        res.status(200).json(orders);
+    }
+    catch(error){
+        res.status(500).json('Internal server error');
+    }
+   },
+
 }
 
 module.exports=OrderController;

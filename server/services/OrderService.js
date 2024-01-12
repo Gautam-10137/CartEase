@@ -9,6 +9,16 @@ const OrderService={
         catch(error){
             console.error(error);
         }
+    },
+    getOrders: async(userId)=>{
+        try{
+            const orders=await Order.find({userId:userId});
+            
+            return orders;
+        }
+        catch(error){
+            console.error(error);
+        }
     }
 }
 

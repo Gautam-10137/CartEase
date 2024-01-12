@@ -19,5 +19,8 @@ router.post('/payment-success',PaymentController.paymentSuccess);
 // getting RazorPay key
 router.get('/get-key',PaymentController.getKey);
 
+// getting orders of particular user
+router.get('/orders/:userId',OrderController.getOrders);
+
 
 module.exports= router;
