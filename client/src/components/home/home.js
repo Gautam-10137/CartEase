@@ -6,16 +6,19 @@ import Cart from '../cart/Cart'
 import OrderSummary from '../checkout/OrderSummary'
 import PaymentDetails from '../checkout/PaymentDetails'
 import Category from '../category/Category'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
   return (
     <div>
       <Header/>
-       <Cart/>
+       <Link to="/cart"><button>Cart</button></Link>
+       <Link to="/addProduct"><button>Add Product</button></Link>
        <Category/>
       <ProductList/>  
-      <AddProduct/>
+      
+      
       
       
      

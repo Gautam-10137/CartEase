@@ -1,16 +1,23 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useDeferredValue } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-
+import { addToCart } from '../../redux/CartSlice';
 const OrderSummary = ({ onNextStep,updateOrderItems}) => {
   const cartItems=useSelector((state)=>state.cart.items||[]);
-
+  const dispatch=useDispatch();
   const navigate=useNavigate();
   const handleShippingClick=()=>{  
     // Navigate to the next step
     updateOrderItems(cartItems);
     onNextStep();
     
+  }
+  const handleIncrement=(item)=>{
+     dispatch(addToCart(item));
+  }
+  const handleDecrement=(item)=>{
+    const decrementedItem={...item,operation:'dec'};
+       dispatch(addToCart(decrementedItem));
   }
   return (
     <div>
@@ -23,7 +30,10 @@ const OrderSummary = ({ onNextStep,updateOrderItems}) => {
              <h3>{item.name}</h3>
              <h4>{item.price}</h4>
              <p>{item.description}</p>
-             <p><strong>quanitiy:</strong> {item.quantity}</p>
+             <p><strong>quanitiy:</strong> 
+             <button onClick={(e)=>handleIncrement(item)}>+</button >
+             {item.quantity}
+             <button onClick={()=>handleDecrement(item)}>-</button></p>
              </div>
         </div>
         )):''}

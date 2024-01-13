@@ -19,7 +19,7 @@ const ProductCard = ({product}) => {
       <div className='product-info'>
       <h3 className='product-name'>{name} </h3>
       <p className='product-price'>Rs.{price}</p>
-      <button onClick={(e)=>handleButtonClick(e)} className='add-to-cart-button'>ADD To Cart</button>
+      {/* <button onClick={(e)=>handleButtonClick(e)} className='add-to-cart-button'>ADD To Cart</button> */}
       </div>
     </div>     
     

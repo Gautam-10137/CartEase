@@ -1,10 +1,12 @@
 import React, {useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../../redux/CartSlice';
+import Cart from '../cart/Cart';
 const ProductDetail = () => {
     const dispatch=useDispatch();
     const {productID}=useParams();
+    const [added,setAdded]=useState(false);
     const [product,setProduct]=useState({
         _id:'',
         name:'',
@@ -40,18 +42,26 @@ const ProductDetail = () => {
    const handleAddToCart=()=>{
 
      dispatch(addToCart(product));
+     setAdded(true);
+
    }
   return (
-    
     <div className='product-detail-container'>
         <div className='product-detail'>
         <img src={product.imageUrl} alt={product.name} ></img>
         <h3>{product.name}</h3>
         <p>{product.description}</p>
         <p><strong>Price: </strong>{product.price}</p>
-        <button onClick={handleAddToCart}>Add to Cart</button>
+        {!added?
+        <button onClick={handleAddToCart}>Add to Cart</button>:
+        <strong>Added to cart!</strong>
+        }
+        
+        <Link to="/cart"><button>Cart</button></Link>
         </div>
+        {/* user reviews */}
     </div>
+
   )
 }
 

@@ -7,9 +7,17 @@ const cartSlice= createSlice({
     },
     reducers:{
         addToCart: (state,action)=>{
-            const {_id,name,price,description,imageUrl,user}=action.payload;
+            const {_id,name,price,description,imageUrl,user,operation}=action.payload;
             const existingItemIndex=state.items.findIndex(item=>item._id===_id);
-            if(existingItemIndex!=-1){
+            if(operation=='dec'){
+                if(state.items[existingItemIndex].quantity==1){
+                   state.items=state.items.filter((item)=>item._id!=_id);
+                }
+                else{
+                    state.items[existingItemIndex].quantity-=1;
+                }
+            }
+            else if(existingItemIndex!=-1 ){
                 state.items[existingItemIndex].quantity+=1;
             }
             else{
@@ -24,6 +32,7 @@ const cartSlice= createSlice({
                 });
 
             }
+            
             
         },
     },
