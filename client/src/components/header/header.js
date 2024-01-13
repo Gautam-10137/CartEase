@@ -15,9 +15,11 @@ const Header = () => {
             </div>
             <div className='profile-section'>
                    <span>Hello , Gautam</span>
-                   <Link to='/login'>
-                    Login</Link>
+                   <Link to='/login'>Login</Link>
+                    <Link to='/register'>Register</Link>
+                    <Link to='/profile'>Profile</Link>
             </div>
+            
         </nav>
     </header>
   )

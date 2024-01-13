@@ -16,7 +16,7 @@ const OrderController={
    getOrders: async(req,res)=>{
     try{
         const userId=req.params.userId;
-        console.log(userId);
+      
         const orders=await OrderService.getOrders(userId);
         res.status(200).json(orders);
     }

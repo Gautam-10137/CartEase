@@ -7,7 +7,7 @@ import OrderConfirmation from './OrderConfirmation';
 const CheckoutPage = () => {
     const [currentStep,setCurrentStep]=useState(1);
     const [orderData, setOrderData] = useState({
-      userId:'657e4cd2567544a0bd963c3e',
+      userId:'',
       items: [], 
       shippingAddress: {
         fullName: '',

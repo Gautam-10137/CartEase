@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
-
+import {jwtDecode} from 'jwt-decode';
 const OrderConfirmation = ({orderData}) => {
    const [items,setItems]=useState(orderData.items);
    const [shippingAddress,setShippingInfo]=useState(orderData.shippingAddress);
@@ -15,24 +15,39 @@ const OrderConfirmation = ({orderData}) => {
        totalAmount+=item.price;   
     }
     setAmount(totalAmount);
+
+    const token=localStorage.getItem('token');
+
+    const getUserIdFromToken=(token)=>{
+      try{ 
+      const decode=jwtDecode(token);
+      return decode.id;
+      }
+      catch(error){
+        console.error('Error decoding token:'+error);
+        return null;
+      }
+    }
+    orderData.userId=getUserIdFromToken(token);
+    console.log("orderData "+orderData);
+    const createOrder=async ()=>{
+      const response=await axios.post('http://127.0.0.1:7000/api/order/create-order',{orderData},{
+            headers:{
+              'Content-type':'application/json'
+            }
+          });
+          // const newOrder=await response.json();
+          
+          setNewOrderId(response.data._id);
+    }
+    createOrder();
    },[]);
    
    const handleConfirmOrder=async()=>{
     try{
-      // to prevent creation of new Order again till payment not done. 
-          if(newOrderId==''){
-          const response=await axios.post('http://127.0.0.1:7000/api/order/create-order',{orderData},{
-            headers:{
-              'Content-type':'application/json'
-            }
-          })
-          // const newOrder=await response.json();
-          
-          setNewOrderId(response.data._id);
-         
-        }
+ 
         
-            const {data:{order}}=await axios.post('http://127.0.0.1:7000/api/payment/create-order',{amount,newOrderId},{
+          const {data:{order}}=await axios.post('http://127.0.0.1:7000/api/payment/create-order',{amount,newOrderId},{
             headers:{
               'Content-type':'application/json'
             }
@@ -65,7 +80,7 @@ const OrderConfirmation = ({orderData}) => {
         const razor=new window.Razorpay(options);
         razor.open();
           
-
+        
           
     }
     catch(error){

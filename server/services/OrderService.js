@@ -12,7 +12,7 @@ const OrderService={
     },
     getOrders: async(userId)=>{
         try{
-            const orders=await Order.find({userId:userId});
+            const orders=await Order.find({userId:userId}).populate('items');
             
             return orders;
         }

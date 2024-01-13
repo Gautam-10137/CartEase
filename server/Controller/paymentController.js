@@ -13,7 +13,7 @@ const razorpay=new Razorpay({
 // for creating an order for payment
 const createOrder=async (req,res)=>{
     try{
-        console.log(req.body);
+       
         const {amount,newOrderId}=req.body;
        const options={
           amount:Number(amount*100),
@@ -24,7 +24,7 @@ const createOrder=async (req,res)=>{
        }; 
        const order=await razorpay.orders.create(options);
        
-       console.log(order);
+      
        res.status(200).json({order});
  
     }

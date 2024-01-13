@@ -4,6 +4,7 @@ const authRoutes=require('./authRoutes');
 const ProductController = require('../Controller/ProductController');
 const PaymentController=require('../Controller/paymentController');
 const OrderController=require('../Controller/orderController');
+const UserController = require('../Controller/userController');
 router.use('/auth',authRoutes);
 router.post('/product/add',ProductController.addProduct);
 router.get('/product/all',ProductController.getProducts);
@@ -25,5 +26,6 @@ router.get('/orders/:userId',OrderController.getOrders);
 // getting products of particular category
 router.get('/product/category/:categoryId',ProductController.getCategoryProducts);
 
-
+// getting user details;
+router.get('/user/:userId',UserController.getUserDetail);
 module.exports= router;

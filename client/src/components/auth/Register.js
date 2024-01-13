@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate=useNavigate();
     const [formData,setFormData]=useState({
         username:'',
         email:'',
@@ -38,9 +40,9 @@ const Register = () => {
             },
             body:JSON.stringify({username,email,password})
          });
-         const data= await response.json();
-        console.log(data);
+        navigate('/');
     }
+       
     return (
     <div>
      <form onSubmit={handleFormSubmit}>         

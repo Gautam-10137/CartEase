@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate=useNavigate();
     const [formData,setFormData]=useState({
         username:'',
         email:'',
@@ -31,7 +33,7 @@ const Login = () => {
          const data=await response.json();
          const token=data.token;
          localStorage.setItem('token',token);
-         console.log(localStorage.getItem('token'));
+         navigate('/');
     }
 
   return (

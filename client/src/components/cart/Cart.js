@@ -22,7 +22,8 @@ const Cart = () => {
   return (
     <div>
        
-       {cartItems.length>0?cartItems.map((item,index)=>(
+       {cartItems.length>0?
+       <div>{cartItems.map((item,index)=>(
         <div className='summary-item' key={index}>
              <img src={item.imageUrl} alt={item.name}></img>
              <div>
@@ -33,11 +34,14 @@ const Cart = () => {
              <button onClick={(e)=>handleIncrement(item)}>+</button >
              {item.quantity}
              <button onClick={()=>handleDecrement(item)}>-</button></p>
-             <button onClick={handleCheckout}>Proceed To Buy</button>
+             
              </div>
              
         </div>
-        )):<div>
+        ))}
+        <button onClick={handleCheckout}>Proceed To Buy</button>
+        </div>
+        :<div>
           <strong>Cart is Empty!</strong>
           <button onClick={handleGoToHome}>Go To Home!</button>
           </div>}
