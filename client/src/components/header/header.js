@@ -3,17 +3,17 @@ import {Link} from 'react-router-dom'
 const Header = () => {
   return (
     <header>
-        <nav  className='header'>
-            <div className='logo'>
+        <nav  className="flex w-full bg-gray-200 justify-between h-10">
+            <div className="font-bold text-2xl bg-white ml-2 ">
               <Link to="/">CartEase</Link>
             </div>
-            <div className='nav-links'>
-             <ul>
+            
+             <ul className="flex justify-evenly w-2/6 bg-white text-xl">
              <li><Link to='/'>Home</Link></li>
              <li><Link to='/about'>About</Link></li>
              </ul>
-            </div>
-            <div className='profile-section'>
+            
+            <div className="text-xl">
                    <span>Hello , Gautam</span>
                    <Link to='/login'>Login</Link>
                     <Link to='/register'>Register</Link>
