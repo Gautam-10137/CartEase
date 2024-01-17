@@ -60,9 +60,12 @@ const ProductList = () => {
   
  
   return (
-    <div className='product-list-container'>
-        <h2>Product Listing :</h2>
+    <div className="bg-gray-200">
+
+        <div className='text-center'>
+        <h2 >Product Listing :</h2>
         <SearchBar setSearchTerm={setSearchTerm}/>
+       </div>
         <div className='product-list '>
            {
             currentProducts.map((product)=>(

@@ -46,18 +46,20 @@ const ProductDetail = () => {
 
    }
   return (
-    <div className='product-detail-container'>
-        <div className='product-detail'>
+    <div className="border-2 bg-slate-400 w-1/2 m-auto flex mt-8">
+        <div className=' w-1/2'>
         <img src={product.imageUrl} alt={product.name} ></img>
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <p><strong>Price: </strong>{product.price}</p>
+        </div>
+        <div className=" m-auto text-center">
+        <h3 className="py-3 text-3xl font-bold">{product.name}</h3>
+        <p className='py-3'>{product.description}</p>
+        <p className='text-xl'><strong>Price: </strong>{product.price}</p>
         {!added?
-        <button onClick={handleAddToCart}>Add to Cart</button>:
+        <button className='bg-white m-5 w-28 rounded-md h-8 text-xl  hover:shadow-xl hover:bg-slate-100' onClick={handleAddToCart}>Add to Cart</button>:
         <strong>Added to cart!</strong>
         }
         
-        <Link to="/cart"><button>Cart</button></Link>
+        <Link to="/cart"><button className='bg-white m-5 w-16 rounded-md h-8 text-xl hover:shadow-xl hover:bg-slate-100'>Cart</button></Link>
         </div>
         {/* user reviews */}
     </div>

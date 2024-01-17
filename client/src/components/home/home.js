@@ -13,9 +13,11 @@ const Home = () => {
   return (
     <div>
       <Header/>
+      <div className='flex justify-end'>
        <Link to="/cart"><button>Cart</button></Link>
-       <Link to="/addProduct"><button>Add Product</button></Link>
-       <Category/>
+       </div>
+       {/* <Link to="/addProduct"><button>Add Product</button></Link> */}
+       {/* <Category/> */}
       <ProductList/>  
       
       

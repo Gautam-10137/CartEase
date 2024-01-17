@@ -23,9 +23,12 @@ const Cart = () => {
     <div>
        
        {cartItems.length>0?
-       <div>{cartItems.map((item,index)=>(
-        <div className='summary-item' key={index}>
+       <div className="bg-slate-200">{cartItems.map((item,index)=>(
+        <div className="" key={index}>
+          <div>
+            <div>
              <img src={item.imageUrl} alt={item.name}></img>
+             </div>
              <div>
              <h3>{item.name}</h3>
              <h4>{item.price}</h4>
@@ -36,7 +39,7 @@ const Cart = () => {
              <button onClick={()=>handleDecrement(item)}>-</button></p>
              
              </div>
-             
+          </div>
         </div>
         ))}
         <button onClick={handleCheckout}>Proceed To Buy</button>
