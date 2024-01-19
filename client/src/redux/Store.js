@@ -4,7 +4,8 @@ import orderReducer from './orderSlice'
 const store= configureStore({
     reducer:{
         cart:cartReducer,
-        order:orderReducer
+        order:orderReducer,
+        
         // other reducers
     },
 });

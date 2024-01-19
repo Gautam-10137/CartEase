@@ -1,21 +1,29 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+
+import { Link, useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
+import { clearCart } from '../../redux/CartSlice';
+import { useDispatch } from 'react-redux';
 const OrderConfirmation = ({orderData}) => {
+   const dispatch=useDispatch();
+   const navigate=useNavigate();
    const [items,setItems]=useState(orderData.items);
    const [shippingAddress,setShippingInfo]=useState(orderData.shippingAddress);
   //  const [paymentDetails,setPaymentDetails]=useState(orderData.paymentDetails);
   const [amount,setAmount]=useState(0);
   const [newOrderId,setNewOrderId]=useState('');
- 
+  const [totalItems,setTotalItems]=useState(0);
   
    useEffect(()=>{
     let totalAmount=0;
+    let totalItems=0
     for(let item of orderData.items){
        totalAmount+=item.price;   
+       totalItems+=item.quantity;
     }
     setAmount(totalAmount);
-
+    setTotalItems(totalItems);
     const token=localStorage.getItem('token');
 
     const getUserIdFromToken=(token)=>{
@@ -79,53 +87,72 @@ const OrderConfirmation = ({orderData}) => {
           }
         const razor=new window.Razorpay(options);
         razor.open();
-          
-        
-          
+              
     }
     catch(error){
          console.log(error);
     }
    }
 
+  const handleCancel=()=>{
+      dispatch(clearCart());
+      navigate("/");
+  }
    console.log("orderData",orderData);
   return (
     <div>
-      Order Confirmation:
+      <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
+        <div><Link to='/'>CartEase</Link></div>
+        <div className=' text-slate-600 '>Checkout</div>
+        <div>
+          <button className='bg-white w-28 rounded mt-1' onClick={handleCancel} >Cancel</button>
+        </div>
+      </div>
+      
        
-      <div className=""> 
-      Order summary:
+      <div className=" w-1/2 mx-auto border-2  mt-5 shadow-md"> 
+      <div className="text-center text-xl font-medium"> Order Summary</div>
+     
         {items.length>0?
         items.map((item,index)=>(
-        <div className='' key={index}>
-             <img src={item.imageUrl} alt={item.name}></img>
-             <div>
-             <h3>{item.name}</h3>
-             <h4>{item.price}</h4>
-             <p>{item.description}</p>
-             <p><strong>quanitiy:</strong> {item.quantity}</p>
-             </div>
+        <div className=' flex h-72 bg-slate-100 my-5' key={index}>
+             <div className=' w-1/3'>
+             <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.imageUrl} alt={item.name}></img>
+            </div>
+            <div className='w-2/3 text-center my-auto'>
+             <h3 className='text-2xl font-bold my-2 p-2'>{item.name}</h3>
+             <h4 className='my-2 p-1' ><strong>Price:</strong> {item.price}</h4>
+             <p className='p-1'>{item.description}</p>
+             <p><strong>quanitity: </strong> {item.quantity}</p>
+            </div>
         </div>
-        )):'hello'}
+        )):'No Item in Cart!!'}
       </div>
 
-      <div className='shipping-info'>
+      <div className='w-1/2 mx-auto my-5  border-2 shadow-md'>
+        <div className="text-center text-xl font-medium">
         Shipping Information:
-        <div>
-        <p><strong>Fullname:</strong> {shippingAddress.fullName}</p>
-        <p><strong>Address Line 1:</strong> {shippingAddress.addressLine1}</p>
-        <p><strong>Address Line 2:</strong> {shippingAddress.addressLine2}</p>
-        <p><strong>City:</strong> {shippingAddress.city}</p>
-        <p><strong>State:</strong> {shippingAddress.state}</p>
-        <p><strong>PostalCode:</strong> {shippingAddress.postalCode}</p>
-        <p><strong>Country:</strong> {shippingAddress.country}</p>
+        </div>
+        <div className='bg-slate-100 my-3'>
+        <p className='p-2'><strong>Fullname:</strong> {shippingAddress.fullName}</p>
+        <p className='p-2'><strong>Address Line 1:</strong> {shippingAddress.addressLine1}</p>
+        <p className='p-2'><strong>Address Line 2:</strong> {shippingAddress.addressLine2}</p>
+        <p className='p-2'><strong>City:</strong> {shippingAddress.city}</p>
+        <p className='p-2'><strong>State:</strong> {shippingAddress.state}</p>
+        <p className='p-2'><strong>PostalCode:</strong> {shippingAddress.postalCode}</p>
+        <p className='p-2'><strong>Country:</strong> {shippingAddress.country}</p>
 
         </div>
       </div>
 
-      <div className='checkout'>
-        <p><strong>Total Amount: </strong>{amount}</p>
-        <button onClick={handleConfirmOrder}>Checkout</button>
+      <div className='text-center w-1/2 mx-auto bg-slate-100 mb-20 shadow-md' >
+        <div>
+          <p className='p-1'><strong>Subtotal Items: </strong>{totalItems}</p>
+          <p className='p-1'><strong>Total Amount: </strong>{amount}</p>
+        </div>
+        <div className='p-2 '>
+          <button className='bg-white w-20 hover:bg-gray-400 rounded-md hover:shadow-md' onClick={handleConfirmOrder}>Checkout</button>
+        </div>
       </div>
       
       

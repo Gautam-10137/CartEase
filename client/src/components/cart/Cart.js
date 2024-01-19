@@ -20,16 +20,16 @@ const Cart = () => {
       dispatch(addToCart(decrementedItem));
  }
   return (
-    <div>
-       
+    <div >
+      <div className='mt-10 border-2 w-1/2 shadow-lg mx-auto'>
        {cartItems.length>0?<div>
-       <div className="bg-slate-200 w-1/2 mx-auto">{cartItems.map((item,index)=>(
-        <div className=" " key={index}>
-          <div className='flex'>
-            <div>
-             <img className='w-50 h-full' src={item.imageUrl} alt={item.name}></img>
-             </div>
-            <div className="text-center my-auto ">
+       <div className="">{cartItems.map((item,index)=>(
+        <div className=" bg-slate-100 mb-5 h-72 " key={index}>
+          <div className='flex h-72'>
+            <div className=' w-1/3  '>
+             <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.imageUrl} alt={item.name}></img>
+            </div>
+           <div className=" w-2/3 text-center my-auto mx-auto">
              <h3 className="text-2xl font-bold p-2">{item.name}</h3>
              <h4 className='p-2'>Price: {item.price}</h4>
              <p className='p-2'>{item.description}</p>
@@ -38,25 +38,29 @@ const Cart = () => {
              {item.quantity}
              <button className='w-8 mx-2 bg-white rounded-md hover:bg-slate-50 hover: shadow-lg' onClick={()=>handleDecrement(item)}>-</button></p>
              
-            </div>
           </div>
+         </div>
         </div>
         ))}
         </div>
         <div className='w-36 mx-auto mt-6'>
-        <button className='w-32 h-8 bg-slate-100 mx-auto mt-6 rounded-md hover:shadow-lg' onClick={handleCheckout}>Proceed To Buy</button>
+        <button className='w-32 h-8 bg-slate-100 mx-auto m-6 rounded-md hover:bg-slate-200 focus:bg-slate-300 hover:shadow-lg' onClick={handleCheckout}>Proceed To Buy</button>
         </div>
         </div>
-        :<div>
-          <strong>Cart is Empty!</strong>
-          <button onClick={handleGoToHome}>Go To Home!</button>
+        :<div className='h-20'>
+          <div className='text-center m-5'>
+          <strong>Oops Cart is Empty!</strong>
+          </div>
+          <div className='w-40 mx-auto'>
+          <button className='bg-slate-200 w-28 rounded ' onClick={handleGoToHome}>Go To Home</button>
+          </div>
           </div>}
       
      
         
 
 
-        
+      </div>
     </div>
   )
 }

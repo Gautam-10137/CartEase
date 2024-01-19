@@ -6,7 +6,7 @@ import Cart from '../cart/Cart';
 const ProductDetail = () => {
     const dispatch=useDispatch();
     const {productID}=useParams();
-    const [added,setAdded]=useState(false);
+ 
     const [product,setProduct]=useState({
         _id:'',
         name:'',
@@ -42,11 +42,11 @@ const ProductDetail = () => {
    const handleAddToCart=()=>{
 
      dispatch(addToCart(product));
-     setAdded(true);
+    
 
    }
   return (
-    <div className="border-2 bg-slate-400 w-1/2 m-auto flex mt-8">
+    <div className="border-4 border-red-100 bg-slate-100 w-1/2 m-auto flex mt-8">
         <div className=' w-1/2'>
         <img src={product.imageUrl} alt={product.name} ></img>
         </div>
@@ -54,12 +54,10 @@ const ProductDetail = () => {
         <h3 className="py-3 text-3xl font-bold">{product.name}</h3>
         <p className='py-3'>{product.description}</p>
         <p className='text-xl'><strong>Price: </strong>{product.price}</p>
-        {!added?
-        <button className='bg-white m-5 w-28 rounded-md h-8 text-xl  hover:shadow-xl hover:bg-slate-100' onClick={handleAddToCart}>Add to Cart</button>:
-        <strong>Added to cart!</strong>
-        }
+    
+        <button className='bg-white m-5 w-28 rounded-md h-8 text-xl  hover:shadow-xl hover:bg-slate-200 focus:bg-slate-300' onClick={handleAddToCart}>Add to Cart</button>
         
-        <Link to="/cart"><button className='bg-white m-5 w-16 rounded-md h-8 text-xl hover:shadow-xl hover:bg-slate-100'>Cart</button></Link>
+        <Link to="/cart"><button className='bg-white m-5 w-16 rounded-md h-8 text-xl hover:shadow-xl hover:bg-slate-200 focus:bg-slate-300'>Cart</button></Link>
         </div>
         {/* user reviews */}
     </div>

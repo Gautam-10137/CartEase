@@ -17,6 +17,7 @@ const cartSlice= createSlice({
                     state.items[existingItemIndex].quantity-=1;
                 }
             }
+            
             else if(existingItemIndex!=-1 ){
                 state.items[existingItemIndex].quantity+=1;
             }
@@ -35,9 +36,13 @@ const cartSlice= createSlice({
             
             
         },
+        clearCart:(state,action)=>{
+            state.items=[];
+        }
     },
 });
 
 export const {addToCart}=cartSlice.actions;
+export const {clearCart}=cartSlice.actions;
 
 export default cartSlice.reducer;

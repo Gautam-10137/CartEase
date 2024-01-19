@@ -60,13 +60,13 @@ const ProductList = () => {
   
  
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 mt-5">
 
-        <div className='text-center'>
-        <h2 >Product Listing :</h2>
+        <div className='text-center pt-2'>
+       
         <SearchBar setSearchTerm={setSearchTerm}/>
        </div>
-        <div className='product-list '>
+        <div className='grid grid-cols-4 gap-4'>
            {
             currentProducts.map((product)=>(
               <ProductCard key={product._id} product={product} ></ProductCard>
