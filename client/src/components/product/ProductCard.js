@@ -16,7 +16,7 @@ const ProductCard = ({product}) => {
   return (   
      <div  className='' onClick={handleClick}>
       <div className='flex flex-col h-68 w-52 bg-gray-500 border-slate-500 border-1 shadow-md  overflow-hidden rounded-xl mt-3'>
-      <div className='h-32  '>
+      <div className='h-32 mt-2 '>
       <img className='h-full w-2/3  rounded-lg m-auto' src={imageUrl} alt={name}  ></img>
       </div>
       <div className=' bg-white h-36 text-center mt-3 pt-2'>

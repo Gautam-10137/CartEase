@@ -93,10 +93,11 @@ const OrderConfirmation = ({orderData}) => {
     <div>
       Order Confirmation:
        
-      <div className="order-summary"> 
+      <div className=""> 
       Order summary:
-        {items.length>0?items.map((item,index)=>(
-        <div className='summary-item' key={index}>
+        {items.length>0?
+        items.map((item,index)=>(
+        <div className='' key={index}>
              <img src={item.imageUrl} alt={item.name}></img>
              <div>
              <h3>{item.name}</h3>

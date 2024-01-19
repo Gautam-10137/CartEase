@@ -32,71 +32,91 @@ const ShippingInformation = ({onNextStep,onPrevStep,updateShippingAddress}) => {
     // navigate('/checkout');
   }
   return (
-    <div className='shipping'>
+   <div className='shipping'>
       <h1>Shipping Information</h1>
-      <form 
+    <form 
       // onSubmit={(e)=>{handlePaymentDetails(e)}}
       >
-        <label>FullName:</label>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>FullName:</label>
         <input
           name='fullName'
           type='text'
           value={shippingAddress.fullName}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-        <label>AddressLine1:</label>
+        ></input>
+      </div>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>AddressLine1:</label>
         <input
           name='addressLine1'
           type='text'
           value={shippingAddress.addressLine1}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-        <label>AddressLine2:</label>
+        ></input>
+      </div>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>AddressLine2:</label>
         <input
           name='addressLine2'
           type='text'
           value={shippingAddress.addressLine2}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-        <label>City:</label>
+        ></input>
+      </div>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>City:</label>
         <input
           name='city'
           type='text'
           value={shippingAddress.city}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-        <label>State:</label>
+        ></input>
+      </div>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>State:</label>
         <input
           name='state'
           type='text'
           value={shippingAddress.state}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-        <label>Postal-Code:</label>
+        ></input>
+      </div>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>Postal-Code:</label>
         <input
           name='postalCode'
           type='text'
           value={shippingAddress.postalCode}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-        <label>Country:</label>
+        ></input>
+      </div>
+      <div className='mb-4'>
+        <label className='block text-gray-500 text-lg'>Country:</label>
         <input
           name='country'
           type='text'
           value={shippingAddress.country}
           onChange={(e)=>handleInputChange(e)}
+          className='w-full border  rounded-md p-2 mt-1 '
           required
-        ></input><br></br>
-
+        ></input>
+      </div>
       <div>
-        <button onClick={handleOrderSummary}>{"<- Order Summary"}</button>
-        <button type="submit" onClick={handleConfirmOrder}>{"Confirm Order ->"}</button>
+        <button className='w-40 rounded-md bg-slate-200 mx-2' onClick={handleOrderSummary}>{"<- Order Summary"}</button>
+        <button className='w-40 rounded-md bg-slate-200 mx-2' type="submit" onClick={handleConfirmOrder}>{"Confirm Order ->"}</button>
       </div>
       </form >
       
