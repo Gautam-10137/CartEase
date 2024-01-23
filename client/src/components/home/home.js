@@ -9,10 +9,10 @@ import Category from '../category/Category'
 import { Link } from 'react-router-dom'
 
 
-const Home = () => {
+const Home = ({isLoggedIn}) => {
   return (
     <div>
-      <Header/>
+      <Header isLoggedIn={isLoggedIn}/>
      
        {/* <Link to="/addProduct"><button>Add Product</button></Link> */}
        {/* <Category/> */}

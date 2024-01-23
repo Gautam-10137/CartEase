@@ -28,7 +28,7 @@ const OrderSummary = ({ onNextStep,updateOrderItems}) => {
     navigate("/");
 }
   return (
-    <div>
+    <div className=''>
       <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
         <div><Link to='/'>CartEase</Link></div>
         <div className=' text-slate-600 '>Order Summary </div>
@@ -36,7 +36,7 @@ const OrderSummary = ({ onNextStep,updateOrderItems}) => {
           <button className='bg-white w-28 rounded mt-1' onClick={handleCancel} >Cancel</button>
         </div>
       </div>
-      <div className="border-2 mb-5 w-1/2 mx-auto mt-5 shadow-md">
+      <div className="border-4 bg-red-100 mb-5 w-1/2 mx-auto mt-5 shadow-md">
 
       {cartItems.length>0?
       <div>

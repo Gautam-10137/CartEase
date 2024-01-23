@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setIsLoggedIn}) => {
     const navigate=useNavigate();
     const [formData,setFormData]=useState({
         username:'',
@@ -33,6 +33,7 @@ const Login = () => {
          const data=await response.json();
          const token=data.token;
          localStorage.setItem('token',token);
+         setIsLoggedIn(true);
          navigate('/');
     }
 

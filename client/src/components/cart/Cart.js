@@ -21,7 +21,7 @@ const Cart = () => {
  }
   return (
     <div >
-      <div className='mt-10 border-2 w-1/2 shadow-lg mx-auto'>
+      <div className='mt-10 border-4 border-red-100 w-1/2 shadow-lg mx-auto'>
        {cartItems.length>0?<div>
        <div className="">{cartItems.map((item,index)=>(
         <div className=" bg-slate-100 mb-5 h-72 " key={index}>
@@ -52,7 +52,7 @@ const Cart = () => {
           <strong>Oops Cart is Empty!</strong>
           </div>
           <div className='w-40 mx-auto'>
-          <button className='bg-slate-200 w-28 rounded ' onClick={handleGoToHome}>Go To Home</button>
+          <button className='bg-slate-100 w-28 rounded shadow-md hover:shadow-lg ' onClick={handleGoToHome}>Go To Home</button>
           </div>
           </div>}
       

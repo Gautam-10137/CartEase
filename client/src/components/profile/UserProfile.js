@@ -1,6 +1,8 @@
 import React, { useState ,useEffect} from 'react'
 import {jwtDecode} from 'jwt-decode';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 const UserProfile = () => {
 
   const [user,setUser]=useState({
@@ -53,21 +55,29 @@ const UserProfile = () => {
 
   return (
     <div>
-      <p><strong>username:</strong>{user.username}</p>
-      <p><strong>email:</strong>{user.email}</p>
-      <div>
-        <strong>Order history:</strong>
+      <div className='bg-slate-200 h-10 text-center text-2xl font-semibold'> 
+      <Link to="/">CartEase</Link></div>
+      <div className='border-4 border-slate-300 w-1/2 mx-auto my-10 ' >
+      <div className='text-center'><p><strong>username: </strong>{user.username}</p></div>
+      <div className='text-center'><p><strong>email:  </strong>{user.email}</p></div>
+      <div className=''>
+      <div className='text-xl  font-medium'>  
+        <p className=' ml-4'> Order history :</p>
+        </div>
+        <div className='text-center  '>
             {
               orders.length>0?orders.map((order,index)=>(
                 <div key={index}>
                 {order.items.map((item)=>(
                   <div key={item._id}>
-                    <p>item: {item.name}  & price{item.price}</p>
+                    <p>item: {item.name}  & price :{item.price}</p>
                   </div>
                 ))}
                 </div>
               )):'No Order Placed'
             }
+      </div>
+      </div>
       </div>
     </div>
   )

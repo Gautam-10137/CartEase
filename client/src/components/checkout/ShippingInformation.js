@@ -40,7 +40,7 @@ const ShippingInformation = ({onNextStep,onPrevStep,updateShippingAddress}) => {
     navigate("/");
 }
   return (
-   <div className=''>
+   <div className='border-4 border-red-100'>
      <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
         <div><Link to='/'>CartEase</Link></div>
         <div className=' text-slate-600 '>Shipping Information</div>
@@ -48,7 +48,7 @@ const ShippingInformation = ({onNextStep,onPrevStep,updateShippingAddress}) => {
           <button className='bg-white w-28 rounded mt-1' onClick={handleCancel} >Cancel</button>
         </div>
       </div>
-      <div className='border-2 w-1/2 mx-auto my-10 shadow-md'>
+      <div className='border-4 bg-red-100 w-1/2 mx-auto my-10 shadow-md'>
         <div className=' mx-auto my-5 w-4/5'>
     <form 
      

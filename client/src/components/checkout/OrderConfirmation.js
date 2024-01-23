@@ -110,7 +110,7 @@ const OrderConfirmation = ({orderData}) => {
       </div>
       
        
-      <div className=" w-1/2 mx-auto border-2  mt-5 shadow-md"> 
+      <div className=" w-1/2 mx-auto border-4 border-red-100 mt-5 shadow-md"> 
       <div className="text-center text-xl font-medium"> Order Summary</div>
      
         {items.length>0?
@@ -129,7 +129,7 @@ const OrderConfirmation = ({orderData}) => {
         )):'No Item in Cart!!'}
       </div>
 
-      <div className='w-1/2 mx-auto my-5  border-2 shadow-md'>
+      <div className='w-1/2 mx-auto my-5 border-4 border-red-100 shadow-md'>
         <div className="text-center text-xl font-medium">
         Shipping Information:
         </div>
@@ -145,7 +145,7 @@ const OrderConfirmation = ({orderData}) => {
         </div>
       </div>
 
-      <div className='text-center w-1/2 mx-auto bg-slate-100 mb-20 shadow-md' >
+      <div className='text-center w-1/2 mx-auto border-4 border-red-100 bg-slate-100 mb-20 shadow-md' >
         <div>
           <p className='p-1'><strong>Subtotal Items: </strong>{totalItems}</p>
           <p className='p-1'><strong>Total Amount: </strong>{amount}</p>
