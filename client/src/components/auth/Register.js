@@ -45,9 +45,9 @@ const Register = () => {
        
     return (
     <div>
-      <div className='text-center my-10 '>
-         <Link to="/">CartEase</Link>
-      </div>
+      <div className="font-bold shadow hover:shadow-md hover:bg-red-200 text-2xl border-2 text-center w-28  border-red-200 rounded bg-red-100 mx-auto mb-10 mt-6 h-8">
+              <Link to="/">CartEase</Link>
+            </div>
       <div className='w-1/3 mx-auto border-2 shadow-md'>
      <form onSubmit={handleFormSubmit}>         
       <div>
@@ -101,7 +101,7 @@ const Register = () => {
       </div>
       {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
       <div className='my-5 text-center'>
-        <button className='bg-slate-100 hover:bg-slate-200 focus:bg-slate-300 w-28 text-xl font-medium' type="submit">Register</button>
+        <button className='bg-slate-100 border-2 border-red-100 hover:bg-slate-200 focus:bg-slate-300 w-28 text-xl font-medium' type="submit">Register</button>
       </div>
     </form>  
     </div>   

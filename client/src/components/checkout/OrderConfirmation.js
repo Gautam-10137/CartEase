@@ -19,7 +19,7 @@ const OrderConfirmation = ({orderData}) => {
     let totalAmount=0;
     let totalItems=0
     for(let item of orderData.items){
-       totalAmount+=item.price;   
+       totalAmount+=item.product.price;   
        totalItems+=item.quantity;
     }
     setAmount(totalAmount);
@@ -47,6 +47,7 @@ const OrderConfirmation = ({orderData}) => {
           // const newOrder=await response.json();
           
           setNewOrderId(response.data._id);
+
     }
     createOrder();
    },[]);
@@ -102,7 +103,9 @@ const OrderConfirmation = ({orderData}) => {
   return (
     <div>
       <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
-        <div><Link to='/'>CartEase</Link></div>
+        <div className="font-bold text-2xl border-2  border-red-200 rounded  bg-red-100 ml-2  mt-1 h-8">
+              <Link to="/">CartEase</Link>
+        </div>
         <div className=' text-slate-600 '>Checkout</div>
         <div>
           <button className='bg-white w-28 rounded mt-1' onClick={handleCancel} >Cancel</button>
@@ -117,12 +120,12 @@ const OrderConfirmation = ({orderData}) => {
         items.map((item,index)=>(
         <div className=' flex h-72 bg-slate-100 my-5' key={index}>
              <div className=' w-1/3'>
-             <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.imageUrl} alt={item.name}></img>
+             <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.product.imageUrl} alt={item.product.name}></img>
             </div>
             <div className='w-2/3 text-center my-auto'>
-             <h3 className='text-2xl font-bold my-2 p-2'>{item.name}</h3>
-             <h4 className='my-2 p-1' ><strong>Price:</strong> {item.price}</h4>
-             <p className='p-1'>{item.description}</p>
+             <h3 className='text-2xl font-bold my-2 p-2'>{item.product.name}</h3>
+             <h4 className='my-2 p-1' ><strong>Price:</strong> {item.product.price}</h4>
+             <p className='p-1'>{item.product.description}</p>
              <p><strong>quanitity: </strong> {item.quantity}</p>
             </div>
         </div>

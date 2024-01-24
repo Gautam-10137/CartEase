@@ -8,7 +8,7 @@ const CheckoutPage = () => {
     const [currentStep,setCurrentStep]=useState(1);
     const [orderData, setOrderData] = useState({
       userId:'',
-      items: [], 
+      items: [{product:{},quantity:0}], 
       shippingAddress: {
         fullName: '',
         addressLine1: '',

@@ -67,10 +67,23 @@ const UserProfile = () => {
         <div className='text-center  '>
             {
               orders.length>0?orders.map((order,index)=>(
-                <div key={index}>
+                <div key={index} className='bg-slate-100 w-1/2 mx-auto mb-2 p-1'>
+                  <strong>order : </strong>{index+1}
                 {order.items.map((item)=>(
                   <div key={item._id}>
-                    <p>item: {item.name}  & price :{item.price}</p>
+                    <Link to={`/product/${item.product._id}`}>
+                   <div className='bg-slate-200 mb-4 w-4/5 mx-auto flex'>
+                    <div className='w-1/3 ml-2'>
+                      <img src={item.product.imageUrl} className='h-28'></img>
+                    </div>
+                    <div className='w-2/3'> 
+                      <p>{item.product.name}</p>
+                      <p><strong>price: </strong> {item.product.price}</p>
+                      <p><strong>quantity: </strong>{item.quantity }</p>
+
+                    </div>
+                   </div>
+                   </Link>
                   </div>
                 ))}
                 </div>

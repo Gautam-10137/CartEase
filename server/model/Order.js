@@ -6,10 +6,41 @@ const OrderSchema=new mongoose.Schema({
       required:true
     },
     items: [{
-        type: mongoose.Schema.Types.ObjectId, 
-        ref:'Product',
+      product: {
+        _id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true
+        },
+        name: {
+          type: String,
+          required: true
+        },
+        price: {
+          type: Number,
+          required: true
+        },
+        description: {
+          type: String,
+          required: true
+        },
+        imageUrl: {
+          type: String,
+          required: true
+        },
+        user: {
+          // Assuming user is an ObjectId, adjust as needed
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+          required: true
+        }
+      },
+      quantity: {
+        type: Number,
         required: true,
-      }],
+        default: 1
+      }
+    }],
     shippingAddress: {
         fullName: {
           type: String,

@@ -42,7 +42,9 @@ const ShippingInformation = ({onNextStep,onPrevStep,updateShippingAddress}) => {
   return (
    <div className='border-4 border-red-100'>
      <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
-        <div><Link to='/'>CartEase</Link></div>
+        <div className="font-bold text-2xl border-2  border-red-200 rounded  bg-red-100 ml-2  mt-1 h-8">
+              <Link to="/">CartEase</Link>
+        </div>
         <div className=' text-slate-600 '>Shipping Information</div>
         <div>
           <button className='bg-white w-28 rounded mt-1' onClick={handleCancel} >Cancel</button>

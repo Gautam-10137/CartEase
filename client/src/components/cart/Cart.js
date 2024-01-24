@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { addToCart } from '../../redux/CartSlice';
@@ -6,13 +6,15 @@ const Cart = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate();
   const cartItems=useSelector((state)=>state.cart.items || []);
+  
+ 
   const handleCheckout=()=>{
     navigate('/checkout');
   }
   const handleGoToHome=()=>{
     navigate('/');
   }
-  const handleIncrement=(item)=>{
+  const handleIncrement=(item)=>{   
     dispatch(addToCart(item));
  }
  const handleDecrement=(item)=>{
@@ -27,12 +29,12 @@ const Cart = () => {
         <div className=" bg-slate-100 mb-5 h-72 " key={index}>
           <div className='flex h-72'>
             <div className=' w-1/3  '>
-             <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.imageUrl} alt={item.name}></img>
+             <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.product.imageUrl} alt={item.product.name}></img>
             </div>
            <div className=" w-2/3 text-center my-auto mx-auto">
-             <h3 className="text-2xl font-bold p-2">{item.name}</h3>
-             <h4 className='p-2'>Price: {item.price}</h4>
-             <p className='p-2'>{item.description}</p>
+             <h3 className="text-2xl font-bold p-2">{item.product.name}</h3>
+             <h4 className='p-2'>Price: {item.product.price}</h4>
+             <p className='p-2'>{item.product.description}</p>
              <p className='p-2 '><strong>quanitiy:</strong> 
              <button className='w-8 mx-2 bg-white rounded-md hover:bg-slate-50 hover: shadow-lg' onClick={(e)=>handleIncrement(item)}>+</button >
              {item.quantity}

@@ -7,14 +7,14 @@ const ProductDetail = () => {
     const dispatch=useDispatch();
     const {productID}=useParams();
  
-    const [product,setProduct]=useState({
-        _id:'',
-        name:'',
-        price:0,
-        description:'',
-        imageUrl:'',
-        user:''
-   });
+    const [product,setProduct]=useState({});
+//         _id:'',
+//         name:'',
+//         price:0,
+//         description:'',
+//         imageUrl:'',
+//         user:''
+//    });
    let productImage = "";
 
    useEffect(()=>{
@@ -28,7 +28,7 @@ const ProductDetail = () => {
             });
             const data=await response.json();
             setProduct(data);
-           console.log(data);
+            console.log(data);
            productImage = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D";
 
         }
@@ -40,8 +40,8 @@ const ProductDetail = () => {
    },[]);
    
    const handleAddToCart=()=>{
-
-     dispatch(addToCart(product));
+     console.log({product});
+     dispatch(addToCart({product}));
     
 
    }

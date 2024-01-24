@@ -18,6 +18,7 @@ const ProductList = () => {
           const data=await response.json();
           const filteredProduct=searchTerm!==''?data.filter((product)=>product.name.toLowerCase().includes(searchTerm.toLowerCase())):data;
          setProducts(filteredProduct);  
+         console.log(products);
         // setProducts(data);
           }
           catch(error){

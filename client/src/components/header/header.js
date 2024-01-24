@@ -25,7 +25,7 @@ const Header = ({isLoggedIn}) => {
   return (
     <header>
         <nav  className="flex w-full bg-gray-200 justify-between h-10 ">
-            <div className="font-bold text-2xl bg-white ml-2  mt-1 h-8">
+            <div className="font-bold text-2xl border-2  border-red-200 rounded  bg-red-100 ml-2  mt-1 h-8">
               <Link to="/">CartEase</Link>
             </div>
             <div className='bg-white w-1/3'> 
@@ -48,10 +48,10 @@ const Header = ({isLoggedIn}) => {
                     </div>
 
                 </div>:<div className='flex space-x-8 mx-2'>
-                    <button className='border-2 border-red-100  bg-white'>
+                    <button className='border-2 border-red-100 rounded  bg-white'>
                         <Link to='/login' >Login</Link>
                     </button>
-                        <button className='border-2 border-red-100 bg-white '>
+                        <button className='border-2 border-red-100 rounded bg-white '>
                             <Link to='/register'><span id='sign'>Sign up</span></Link>
                         </button>      
                 </div>}

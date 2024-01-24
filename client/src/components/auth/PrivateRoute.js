@@ -4,9 +4,9 @@ import { Route,Navigate } from 'react-router-dom'
 const PrivateRoute = ({element,isLoggedIn,...props}) => {
      
   return (
-     isLoggedIn?
+    //  isLoggedIn?
      element
-     :<Navigate to="/login" replace></Navigate>
+    //  :<Navigate to="/login" replace></Navigate>
 
   )
 }

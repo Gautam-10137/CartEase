@@ -6,14 +6,14 @@ const ProductCard = ({product}) => {
     const navigate=useNavigate();
     const dispatch=useDispatch();
  
-    const {_id,name,price,imageUrl,description}=product;
+    const {_id,name,price,imageUrl,description,user}=product;
     const handleClick=()=>{
       navigate(`/product/${_id}`);    
     }
     const handleButtonClick=(e)=>{
       e.stopPropagation();
-     
-      dispatch(addToCart(product));
+      const item={product};
+      dispatch(addToCart(item));
     }
   return (   
      <div  className='' onClick={handleClick}>

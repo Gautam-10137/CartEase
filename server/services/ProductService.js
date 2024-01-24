@@ -17,7 +17,7 @@ const PollService={
     },
     getProducts: async()=>{
         try{
-            const products= Product.find().populate('user');
+            const products= await Product.find().populate('user');
             return products;
         }
         catch(error){
@@ -27,7 +27,7 @@ const PollService={
     getProduct: async(productID)=>{
         try{ 
             
-             const product=Product.findById(productID).populate('user');
+             const product=await Product.findById(productID).populate('user');
              return product;
         }
         catch(error){
