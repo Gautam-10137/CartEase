@@ -25,7 +25,7 @@
         <li>Navigate to the server directory: <code>cd server</code></li>
         <li>Create a <code>.env</code> file in the server directory and add your environment variables (e.g., MongoDB URI, JWT secret)</li>
         <li>Start the  server: <code>npm run index</code></li>
-        <li>Start the  client: <code>npm run index</code></li>       
+        <li>Start the  client: <code>npm run client</code></li>       
 </ol>
 
 <h2>Usage</h2>
