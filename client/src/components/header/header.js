@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 const Header = ({isLoggedIn}) => {
   const [username,setUsername]=useState('');
-    const [userId,setUserId]=useState('');
+    const [userId,setUserId]=useState(null);
     useEffect(()=>{
        const token=localStorage.getItem('token');
        const getUserIdFromToken = (token) => {
@@ -39,7 +39,7 @@ const Header = ({isLoggedIn}) => {
                 <Link to="/cart"><button>Cart</button></Link>
              </div>
             <div className=" text-lg h-8 mt-1   ">
-            {isLoggedIn?<div className='flex space-x-8 mx-4'>
+            {isLoggedIn||userId?<div className='flex space-x-8 mx-4'>
                     <div >
                         Hii,{username}
                     </div> 

@@ -43,7 +43,7 @@ const ProductList = () => {
     const pageNumbers=Math.ceil(products.length/productsPerPage);
 
     return (
-      <div className='pagination'> 
+      <div className='pagination '> 
         {
          Array.from({ length: pageNumbers }).map((_, index) => index + 1).map((pageNumber) => (
            <span

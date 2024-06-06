@@ -44,48 +44,68 @@ const AddProduct = () => {
        }
     }
   return (
-    <div>
-        <form onSubmit={(e)=>{handleFormSubmit(e)}}>
-            <label>Name:</label>
+    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+    <form onSubmit={handleFormSubmit} className="space-y-4">
+        <div>
+            <label className="block text-gray-700">Name:</label>
             <input
-              type="text"
-              name='name'
-              value={product.name}
-              onChange={(e)=>{handleInputChange(e)}}
-            ></input>
-            <label>Price:</label>
-            <input 
-            type='number'
-            name='price'
-            value={product.price}
-            onChange={(e)=>{handleInputChange(e)}}
-            ></input>
-            <label>Description:</label>
-            <textarea rows="2" cols="10"
-              type='text'
-              name='description'
-              value={product.description}
-              onChange={(e)=>{handleInputChange(e)}}
-            ></textarea>
-            <label>ImageUrl</label>
+                type="text"
+                name="name"
+                value={product.name}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+            />
+        </div>
+        <div>
+            <label className="block text-gray-700">Price:</label>
             <input
-              type='text'
-              name='imageUrl'
-              value={product.imageUrl}
-              onChange={(e)=>{handleInputChange(e)}}
-            ></input>
-            <label>Category:</label>
-            <select value={product.category} onChange={(e)=>setProduct({...product,category:e.target.value})}>
-              <option  value="" disabled>Select a category </option>
-             {categories.map((category,index)=>(
-              <option key={index} value={category}>{category}</option>
-             ))}
-
+                type="number"
+                name="price"
+                value={product.price}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+            />
+        </div>
+        <div>
+            <label className="block text-gray-700">Description:</label>
+            <textarea
+                rows="3"
+                name="description"
+                value={product.description}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+            />
+        </div>
+        <div>
+            <label className="block text-gray-700">Image URL:</label>
+            <input
+                type="text"
+                name="imageUrl"
+                value={product.imageUrl}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded-md"
+            />
+        </div>
+        <div>
+            <label className="block text-gray-700">Category:</label>
+            <select
+                value={product.category}
+                onChange={(e) => setProduct({ ...product, category: e.target.value })}
+                className="w-full p-2 border border-gray-300 rounded-md"
+            >
+                <option value="" disabled>Select a category</option>
+                {categories.map((category, index) => (
+                    <option key={index} value={category}>{category}</option>
+                ))}
             </select>
-               <button type='submit'>submit</button>
-
-        </form>
-    </div>
+        </div>
+        <div className="text-center">
+        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Submit
+                    </button>
+        </div>
+    </form>
+</div>
   )
 }
 
