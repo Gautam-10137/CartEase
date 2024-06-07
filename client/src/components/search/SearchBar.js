@@ -1,11 +1,14 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
-const SearchBar = ({setSearchTerm}) => {
+const SearchBar = ({setSearchTerm,searchTerm}) => {
   const [search,setSearch]=useState('');
+  useEffect(() => {
+    setSearch(searchTerm);
+  }, [searchTerm]);
   const handleSearch=()=>{
-    setSearchTerm(search); 
-       
+    setSearchTerm(search);   
   }
+
   return (
     <div className=''>
       <input

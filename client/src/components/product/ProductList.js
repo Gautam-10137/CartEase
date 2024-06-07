@@ -1,35 +1,33 @@
 import React,{ useEffect, useState }  from 'react'
 import ProductCard from './ProductCard';
 import SearchBar from '../search/SearchBar';
+import { useSelector } from 'react-redux';
+
 const ProductList = () => {
    const [products,setProducts]=useState([]);
    const [filteredProducts,setFilteredProducts]=useState([]);
    const [currentPage,setCurrentPage]=useState(1);
    const [productsPerPage]=useState(10);
    const [searchTerm,setSearchTerm]=useState('');
+   
+   var productItems=useSelector((state)=>state.product.items|| []);
+
+   console.log(products);
   //  Fetching products from backend
+  useEffect(()=>{
+      setProducts(productItems);
+  },[])
 
+  useEffect(()=>{
+    const filteredProduct=searchTerm!==''?productItems.filter((product)=>product.name.toLowerCase().includes(searchTerm.toLowerCase())):productItems;
+    setProducts(filteredProduct);
 
-   useEffect(()=>{
-       console.log('search');
-         const fetchData=async ()=>{
-          try{
-          const response=await fetch('http://127.0.0.1:7000/api/product/all');
-          const data=await response.json();
-          const filteredProduct=searchTerm!==''?data.filter((product)=>product.name.toLowerCase().includes(searchTerm.toLowerCase())):data;
-         setProducts(filteredProduct);  
-         console.log(products);
-        // setProducts(data);
-          }
-          catch(error){
-             console.error('Error Fetching products: '+ error);
-          }
-         }
-     
-       fetchData();
-   },[searchTerm])
-  
+  },[searchTerm,products,productItems]);
 
+  const showAllProducts=()=>{
+    setProducts(productItems);
+    setSearchTerm('');
+  }
 
   const indexOfLastProduct=currentPage*productsPerPage;
   const indexOfFirstProduct=indexOfLastProduct-productsPerPage;
@@ -59,13 +57,15 @@ const ProductList = () => {
     )
   }
   
- 
+ {if(products.length==0){
+  return <div>...Loading Products</div>
+ }}
   return (
     <div className="bg-gray-200 mt-5">
-
+<button className='text-xl bg-slate-300 w-fit rounded h-8 border-2 border-red-200  mx-2 my-2 shadow-md hover:shadow-lg' onClick={showAllProducts}>All Products</button>
         <div className='text-center pt-2'>
        
-        <SearchBar setSearchTerm={setSearchTerm}/>
+        <SearchBar setSearchTerm={setSearchTerm}  searchTerm={searchTerm}/>
        </div>
         <div className='grid grid-cols-4 gap-4 ml-8'>
            {

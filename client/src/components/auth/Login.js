@@ -1,13 +1,17 @@
 import React,{useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-
-const Login = ({setIsLoggedIn}) => {
+import { useAuth } from '../../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from '../../redux/productSlice';
+const Login = () => {
     const navigate=useNavigate();
+    const dispatch=useDispatch();
     const [formData,setFormData]=useState({
         username:'',
         email:'',
         password:''
     });
+    const {setIsLoggedIn}=useAuth();
 
     const handleInputChange=(e)=>{
         const {name,value}=e.target;
@@ -34,6 +38,7 @@ const Login = ({setIsLoggedIn}) => {
          const token=data.token;
          localStorage.setItem('token',token);
          setIsLoggedIn(true);
+        //  dispatch(fetchProducts());
          navigate('/');
     }
 

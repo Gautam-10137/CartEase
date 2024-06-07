@@ -3,9 +3,11 @@ import {Link} from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-const Header = ({isLoggedIn}) => {
+import { useAuth } from '../../context/AuthContext';
+const Header = () => {
   const [username,setUsername]=useState('');
     const [userId,setUserId]=useState(null);
+    const {isLoggedIn}=useAuth();
     useEffect(()=>{
        const token=localStorage.getItem('token');
        const getUserIdFromToken = (token) => {
@@ -30,8 +32,8 @@ const Header = ({isLoggedIn}) => {
             </div>
             <div className='bg-white w-1/3'> 
              <ul className="flex justify-evenly  h-full rounded-sm   bg-red-100 text-xl  text-center">
-             <li className=' bg-white rounded hover:shadow-md h-7  font-medium mt-1'><Link to='/'>About</Link></li>
-             <li className='hover:shadow-md rounded bg-white h-7 mt-1 font-medium '><Link to='/'>Contact</Link></li>
+             <li className=' bg-white rounded hover:shadow-md h-7  font-medium mt-1'><Link to='/about'>About</Link></li>
+             <li className='hover:shadow-md rounded bg-white h-7 mt-1 font-medium '><Link to='/contact'>Contact</Link></li>
              </ul>
              </div>
              <div className='flex space-x-8 mx-2'>
@@ -39,7 +41,7 @@ const Header = ({isLoggedIn}) => {
                 <Link to="/cart"><button>Cart</button></Link>
              </div>
             <div className=" text-lg h-8 mt-1   ">
-            {isLoggedIn||userId?<div className='flex space-x-8 mx-4'>
+            {isLoggedIn?<div className='flex space-x-8 mx-4'>
                     <div >
                         Hii,{username}
                     </div> 

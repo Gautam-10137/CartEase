@@ -13,32 +13,42 @@ import AddProduct from './components/product/AddProduct';
 import UserProfile from './components/profile/UserProfile';
 import Header from './components/header/header';
 import PrivateRoute from './components/auth/PrivateRoute';
+import { AuthProvider } from './context/AuthContext';
+import AboutUs from './components/aboutUs/AboutUs';
+import ContactUs from './components/contactUs/ContactUs';
 
 function App() {
   const [isLoggedIn,setIsLoggedIn]=useState(false);
   return (
+    <AuthProvider>
     <div className="App">
      <BrowserRouter>
      <div>
         {/* <Header/> */}
         <Routes>
-          <Route index path="/" exact element={<Home  isLoggedIn={isLoggedIn}/>} ></Route>
+          <Route index path="/" exact element={<Home  />} ></Route>
           {/* <Route path="/login" element={<Login/>}></Route> */}
           {/* <Route path="/register" element={<Register/>}></Route> */}
           <Route path="/product/:productID" element={
           <div>
-          <Header isLoggedIn={isLoggedIn}/>
+          <Header />
           <ProductDetail/>
         </div>} exact></Route>
+         <Route path="/about" element={
+          <div><Header/><AboutUs/></div>
+         }></Route>
+         <Route path="/contact" element={
+          <div><Header/><ContactUs/></div>
+         }></Route>
           {/* <Route path="/checkout" element={<CheckoutPage/>}></Route>
           <Route path="/paymentsuccess" element={<PaymentSuccess/>} ></Route> */}
           <Route path="/product/category/:categoryId" element={<CategoryProducts/>} exact></Route>
           
           <Route path="/addProduct" element={<AddProduct/>}></Route>
           <Route path="/cart" element={
-            <PrivateRoute isLoggedIn={isLoggedIn} element={
+            <PrivateRoute  element={
             <div>
-            <Header isLoggedIn={isLoggedIn} />
+            <Header  />
             <Cart />
           </div>}/>}></Route>
 
@@ -46,10 +56,10 @@ function App() {
         </Routes>
        
         <Routes>
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>}></Route>
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/checkout" element={<CheckoutPage/>}></Route>
-          <Route path="/paymentsuccess" element={<PaymentSuccess/>} ></Route>
+          <Route path="/paymentsuccess" element={<PaymentSuccess />} ></Route>
           
           <Route path="/profile" element={
             <div>
@@ -61,6 +71,7 @@ function App() {
      </BrowserRouter>
       
     </div>
+    </AuthProvider>
   );
 }
 

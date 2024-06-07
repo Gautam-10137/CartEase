@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../header/header'
 import AddProduct from '../product/AddProduct'
 import ProductList from '../product/ProductList'
@@ -7,15 +7,18 @@ import OrderSummary from '../checkout/OrderSummary'
 import PaymentDetails from '../checkout/PaymentDetails'
 import Category from '../category/Category'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { fetchProducts } from '../../redux/productSlice'
 
-
-const Home = ({isLoggedIn}) => {
+const Home = () => {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+   dispatch(fetchProducts());
+  },[]);
   return (
     <div>
-      <Header isLoggedIn={isLoggedIn}/>
+      <Header />
      
-       {/* <Link to="/addProduct"><button>Add Product</button></Link> */}
-       {/* <Category/> */}
       <ProductList/>  
       
       
