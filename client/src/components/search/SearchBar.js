@@ -14,6 +14,7 @@ const SearchBar = ({setSearchTerm,searchTerm}) => {
       <input
         type='text'
         value={search}
+        className='border-2 border-blue-500'
         onChange={(e)=>{setSearch(e.target.value);  }}      
       ></input>
       <button className='text-xl bg-slate-300 w-20 h-8 border-2 border-red-200 mx-2 shadow-md hover:shadow-lg' onClick={handleSearch}>search</button>

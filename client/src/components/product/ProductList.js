@@ -61,20 +61,17 @@ const ProductList = () => {
   return <div>...Loading Products</div>
  }}
   return (
-    <div className="bg-gray-200 mt-5">
-<button className='text-xl bg-slate-300 w-fit rounded h-8 border-2 border-red-200  mx-2 my-2 shadow-md hover:shadow-lg' onClick={showAllProducts}>All Products</button>
-        <div className='text-center pt-2'>
-       
-        <SearchBar setSearchTerm={setSearchTerm}  searchTerm={searchTerm}/>
-       </div>
-        <div className='grid grid-cols-4 gap-4 ml-8'>
-           {
-            currentProducts.map((product)=>(
-              <ProductCard key={product._id} product={product} ></ProductCard>
-            ))
-           }  
-        </div>   
-        <div className='pagination'>{renderPaginationControls()}</div>
+    <div className="bg-gray-100 mt-5">
+      <button className='text-xl bg-slate-300 w-fit rounded h-8 border-2 border-red-200 mx-2 my-2 shadow-md hover:shadow-lg' onClick={showAllProducts}>All Products</button>
+      <div className='text-center pt-2'>
+        <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
+      </div>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ml-8'>
+        {currentProducts.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))}
+      </div>
+      {renderPaginationControls()}
     </div>
   );
   

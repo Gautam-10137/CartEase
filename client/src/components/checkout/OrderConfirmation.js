@@ -102,9 +102,9 @@ const OrderConfirmation = ({orderData}) => {
    console.log("orderData",orderData);
   return (
     <div>
-      <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
-        <div className="font-bold text-2xl border-2  border-red-200 rounded  bg-red-100 ml-2  mt-1 h-8">
-              <Link to="/">CartEase</Link>
+      <div className='bg-slate-200  h-10 flex justify-around text-xl font-medium '>
+        <div className="font-bold text-2xl    rounded   ml-2  mt-1 h-8">
+              <Link to="/"></Link>
         </div>
         <div className=' text-slate-600 '>Checkout</div>
         <div>
@@ -118,7 +118,7 @@ const OrderConfirmation = ({orderData}) => {
      
         {items.length>0?
         items.map((item,index)=>(
-        <div className=' flex h-72 bg-slate-100 my-5' key={index}>
+        <div className=' flex h-72 bg-slate-300 my-5' key={index}>
              <div className=' w-1/3'>
              <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.product.imageUrl} alt={item.product.name}></img>
             </div>
@@ -136,7 +136,7 @@ const OrderConfirmation = ({orderData}) => {
         <div className="text-center text-xl font-medium">
         Shipping Information:
         </div>
-        <div className='bg-slate-100 my-3'>
+        <div className='bg-slate-300 my-3'>
         <p className='p-2'><strong>Fullname:</strong> {shippingAddress.fullName}</p>
         <p className='p-2'><strong>Address Line 1:</strong> {shippingAddress.addressLine1}</p>
         <p className='p-2'><strong>Address Line 2:</strong> {shippingAddress.addressLine2}</p>
@@ -148,7 +148,7 @@ const OrderConfirmation = ({orderData}) => {
         </div>
       </div>
 
-      <div className='text-center w-1/2 mx-auto border-4 border-red-100 bg-slate-100 mb-20 shadow-md' >
+      <div className='text-center w-1/2 mx-auto border-4 border-red-100 bg-slate-300 mb-20 shadow-md' >
         <div>
           <p className='p-1'><strong>Subtotal Items: </strong>{totalItems}</p>
           <p className='p-1'><strong>Total Amount: </strong>{amount}</p>

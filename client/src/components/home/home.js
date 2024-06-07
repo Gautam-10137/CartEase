@@ -1,33 +1,21 @@
-import React, { useEffect } from 'react'
-import Header from '../header/header'
-import AddProduct from '../product/AddProduct'
-import ProductList from '../product/ProductList'
-import Cart from '../cart/Cart'
-import OrderSummary from '../checkout/OrderSummary'
-import PaymentDetails from '../checkout/PaymentDetails'
-import Category from '../category/Category'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { fetchProducts } from '../../redux/productSlice'
+import React, { useEffect } from 'react';
+import ProductList from '../product/ProductList';
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from '../../redux/productSlice';
 
 const Home = () => {
-  const dispatch=useDispatch();
-  useEffect(()=>{
-   dispatch(fetchProducts());
-  },[]);
-  return (
-    <div>
-      <Header />
-     
-      <ProductList/>  
-      
-      
-      
-      
-     
-    
-    </div>
-  )
-}
+  const dispatch = useDispatch();
 
-export default Home
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  return (
+    <div className="container mx-auto">
+      <h1 className="text-4xl text-blue-600 font-bold text-center mt-8 mb-4">Welcome to CartEase</h1>
+      <ProductList />
+    </div>
+  );
+};
+
+export default Home;

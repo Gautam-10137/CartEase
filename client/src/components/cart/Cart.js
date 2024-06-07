@@ -26,7 +26,7 @@ const Cart = () => {
       <div className='mt-10 border-4 border-red-100 w-1/2 shadow-lg mx-auto'>
        {cartItems.length>0?<div>
        <div className="">{cartItems.map((item,index)=>(
-        <div className=" bg-slate-100 mb-5 h-72 " key={index}>
+        <div className=" bg-slate-300 mb-5 h-72 " key={index}>
           <div className='flex h-72'>
             <div className=' w-1/3  '>
              <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.product.imageUrl} alt={item.product.name}></img>

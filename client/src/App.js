@@ -24,35 +24,19 @@ function App() {
     <div className="App">
      <BrowserRouter>
      <div>
-        {/* <Header/> */}
+        <Header/>
         <Routes>
           <Route index path="/" exact element={<Home  />} ></Route>
-          {/* <Route path="/login" element={<Login/>}></Route> */}
-          {/* <Route path="/register" element={<Register/>}></Route> */}
-          <Route path="/product/:productID" element={
-          <div>
-          <Header />
-          <ProductDetail/>
-        </div>} exact></Route>
-         <Route path="/about" element={
-          <div><Header/><AboutUs/></div>
-         }></Route>
-         <Route path="/contact" element={
-          <div><Header/><ContactUs/></div>
-         }></Route>
-          {/* <Route path="/checkout" element={<CheckoutPage/>}></Route>
-          <Route path="/paymentsuccess" element={<PaymentSuccess/>} ></Route> */}
+         
+          <Route path="/product/:productID" element=  {<ProductDetail/> }exact></Route>
+         <Route path="/about" element={ <AboutUs/>}></Route>
+         <Route path="/contact" element={<ContactUs/>}></Route>
+         
           <Route path="/product/category/:categoryId" element={<CategoryProducts/>} exact></Route>
           
           <Route path="/addProduct" element={<AddProduct/>}></Route>
-          <Route path="/cart" element={
-            <PrivateRoute  element={
-            <div>
-            <Header  />
-            <Cart />
-          </div>}/>}></Route>
+          <Route path="/cart" element={<PrivateRoute  element={<Cart />}/>}></Route>
 
-          
         </Routes>
        
         <Routes>

@@ -29,9 +29,9 @@ const OrderSummary = ({ onNextStep,updateOrderItems}) => {
 }
   return (
     <div className=''>
-      <div className='bg-slate-100  h-10 flex justify-around text-xl font-medium '>
-        <div className="font-bold text-2xl border-2  border-red-200 rounded  bg-red-100 ml-2  mt-1 h-8">
-              <Link to="/">CartEase</Link>
+      <div className='bg-slate-200  h-10 flex justify-around text-xl font-medium '>
+        <div className="font-bold text-2xl ml-2  mt-1 h-8">
+              <Link to="/"></Link>
         </div>
         <div className=' text-slate-600 '>Order Summary </div>
         <div>
@@ -44,7 +44,7 @@ const OrderSummary = ({ onNextStep,updateOrderItems}) => {
       <div>
       <div className=" " >{cartItems.map((item,index)=>(
 
-        <div className=" bg-slate-100 mb-5 h-72" key={index}>
+        <div className=" bg-slate-200 mb-5 h-72" key={index}>
           <div className='flex h-72'>
             <div className=' w-1/3  '>
              <img className=' h-5/6 mt-5 ml-2 w-full  border-2 shadow-md' src={item.product.imageUrl} alt={item.product.name}></img>

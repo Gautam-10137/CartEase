@@ -8,6 +8,10 @@ export const AuthProvider=({children})=>{
 
     const [isLoggedIn,setIsLoggedIn]=useState(false);
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token); // Set isLoggedIn based on token existence
+    }, []);
 
     return(
         <AuthContext.Provider value={{isLoggedIn,setIsLoggedIn}}>
